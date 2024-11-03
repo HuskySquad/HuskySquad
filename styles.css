@@ -1,0 +1,932 @@
+:root {
+    --primary-color: #66cdfd7e;
+    --secondary-color: #ff66b2;
+    --accent-color: #00ff99;
+    --background-color: #0a0a0a;
+    --text-color: #e0e0e0;
+    --hover-color: #007bff;
+}
+
+.loading {
+    position: fixed;
+    /* 固定定位，使其覆盖整个视口 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    /* 半透明背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* 确保在所有内容之上 */
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: fit-content;
+    font-size: 40px;
+    font-family: monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0000;
+    -webkit-text-stroke: 1px #000;
+    --g: conic-gradient(#ffffff 0 0) no-repeat text;
+    background: var(--g) 0, var(--g) 1ch, var(--g) 2ch, var(--g) 3ch, var(--g) 4ch, var(--g) 5ch, var(--g) 6ch;
+    background-position-y: 100%;
+    animation: l15 3s infinite;
+}
+
+.loader:before {
+    content: "Loading";
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;
+    /* Darker background for modern look */
+    color: #e0e0e0;
+    /* Light gray text */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navigation Bar */
+header {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 15px 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    /* 将子元素分开，logo 在左侧，导航在右侧 */
+    align-items: center;
+    width: 100%;
+    position: relative;
+    /* 使下划线相对于导航条定位 */
+}
+
+/* Navigation Container */
+.nav-container {
+    display: flex;
+    /* 使用 Flexbox */
+    justify-content: center;
+    /* 水平居中对齐 */
+    align-items: center;
+    /* 垂直居中对齐 */
+    flex-wrap: wrap;
+    /* 允许换行 */
+    padding: 10px;
+    /* 内边距 */
+}
+
+/* 导航链接 */
+.nav-container ul {
+    list-style: none;
+    /* 去掉默认的列表样式 */
+    display: flex;
+    /* 使用 Flexbox */
+    margin: 0;
+    /* 去掉外边距 */
+    padding: 0;
+    /* 去掉内边距 */
+}
+
+/* 单个导航项 */
+.nav-container li {
+    margin: 0 15px;
+    /* 为导航项添加左右间距 */
+}
+
+/* 导航链接样式 */
+.nav-container a {
+    text-decoration: none;
+    /* 去掉下划线 */
+    color: #fff;
+    /* 文字颜色 */
+    font-size: 18px;
+    /* 默认字体大小 */
+    transition: color 0.3s;
+    /* 添加颜色变化过渡效果 */
+}
+
+.nav-container a:hover {
+    color: #ffcc00;
+    /* 悬停时改变颜色 */
+}
+
+
+
+.logo {
+    display: flex;
+    /* 使logo内容在一行内排列 */
+    align-items: center;
+    /* 垂直居中 */
+}
+
+.logo img {
+    height: 50px;
+    /* 根据需要调整logo的高度 */
+    margin-right: 10px;
+    /* logo与文字之间的间距 */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    /* 添加margin: 0;，以消除默认边距 */
+}
+
+nav ul li {
+    margin-left: 15px;
+    margin-right: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 20px;
+    position: relative;
+    /* 使下划线能够相对于链接进行定位 */
+}
+
+nav ul li a:hover {
+    color: #66cdfd7e;
+}
+
+nav ul li a::after {
+    content: "";
+    /* 添加伪元素 */
+    position: absolute;
+    left: 50%;
+    /* 初始位置 */
+    bottom: -5px;
+    /* 距离文本的高度 */
+    height: 2px;
+    /* 下划线的高度 */
+    width: 0;
+    /* 初始宽度为0 */
+    background-color: yellow;
+    /* 下划线的颜色 */
+    transition: width 0.3s ease, left 0.3s ease;
+    /* 平滑过渡效果 */
+}
+
+nav ul li a.active::after,
+nav ul li a:hover::after {
+    width: 100%;
+    /* 当活动或悬停时设置宽度为100% */
+    left: 0;
+    /* 对齐到文本的左侧 */
+}
+
+nav .underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    /* 下划线的高度 */
+    background: rgba(255, 255, 255, 0);
+    /* 下划线颜色 */
+    transition: left 0.3s ease, width 0.3s ease;
+    /* 平滑过渡效果 */
+}
+
+.jump-animation span {
+    display: inline-block;
+    /* 确保每个字符可以单独动画 */
+    opacity: 0;
+    /* 初始不可见 */
+}
+
+.jump-animation span.show {
+    opacity: 1;
+    /* 显示字符 */
+    animation: jump 0.5s ease forwards;
+    /* 跳跃动画 */
+}
+
+.typing-animation {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid orange;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+/* Discord Icon */
+.discord-icon {
+    position: absolute;
+    bottom: 45px;
+    left: 75px;
+    font-size: 25px;
+    color: #ffffff00;
+    z-index: 100;
+}
+
+.discord-icon i {
+    color: #7289da;
+    /* Discord color */
+}
+
+#starCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* 确保Canvas在底层 */
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    animation: gradient 10s ease infinite;
+    /* 添加渐变动画 */
+}
+
+/* Hero Section */
+.hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    border-radius: 10px;
+    animation: fadeInUp 1s ease-out;
+}
+
+
+.hero h1 {
+    font-size: 55px;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 25px;
+    color: #66ff66;
+    text-shadow: 0 0 8px rgba(102, 255, 102, 0.8), 0 0 15px rgba(102, 255, 102, 0.6);
+    margin-bottom: 30px;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+        /* 向上移动 */
+    }
+
+    60% {
+        transform: translateY(-5px);
+        /* 向上稍微移动 */
+    }
+}
+
+.cta-button {
+    display: inline-block;
+    /* 确保按钮可以使用动画 */
+    transition: transform 0.2s ease;
+    /* 添加平滑过渡效果 */
+}
+
+/* 当鼠标悬停在按钮上时添加动画 */
+.cta-button:hover {
+    animation: bounce 0.5s infinite;
+    /* 添加弹跳动画，循环播放 */
+}
+
+.cta-button {
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #ff66b2, #66ff66);
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background: linear-gradient(90deg, #00cc99, #00ff99);
+    transform: translateY(-4px);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Darker overlay */
+    animation: overlayAnimation 6s infinite alternate;
+}
+
+/* Section Styles */
+section {
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Separator Between Sections */
+section:not(:first-of-type) {
+    border-top: 1px solid #333;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 60px;
+    background: #ff3e00;
+    /* Bright orange */
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Game Grid */
+.game-image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    /* 防止图像溢出 */
+    position: relative;
+    /* 为绝对定位的元素提供上下文 */
+    /* Makes sure the container wraps the image */
+}
+
+.game-image-container img {
+    display: block;
+    /* Removes bottom space from the image */
+    width: 100%;
+    /* Makes the image responsive */
+    height: auto;
+    /* Maintains aspect ratio */
+    transition: transform 0.3s ease;
+    /* 添加过渡效果 */
+}
+
+.game-image-container:hover img {
+    transform: scale(1.05);
+    /* 放大图像 */
+    transition: transform 0.3s;
+    /* 添加过渡效果 */
+}
+
+.game-info {
+    position: absolute;
+    bottom: 10px;
+    /* Adjusts the vertical position from the bottom */
+    left: 50%;
+    /* Centering horizontally */
+    transform: translateX(-50%);
+    /* Shifts the element back by half its width to center it */
+    color: white;
+    /* Text color */
+    background-color: rgba(0, 0, 0, 0);
+    /* Semi-transparent background */
+    padding: 10px;
+    /* Space around text */
+    border-radius: 5px;
+    /* Rounded corners */
+    text-align: center;
+    /* Centers text within the game-info */
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    /* 隐藏溢出 */
+    width: 100%;
+    /* 自适应宽度 */
+    max-width: 800px;
+    /* 设置最大宽度 */
+    margin: auto;
+    /* 居中 */
+}
+
+.game-card {
+    display: none;
+    /* 默认隐藏所有游戏卡片 */
+    width: 100%;
+    /* 确保游戏卡片占满全宽 */
+}
+
+.game-card.active {
+    display: block;
+    /* 显示当前活动的游戏卡片 */
+}
+
+.indicators {
+    display: flex;
+    justify-content: center;
+    /* 居中对齐 */
+    margin-top: 10px;
+    /* 上边距 */
+}
+
+.indicator {
+    width: 10px;
+    /* 指示器宽度 */
+    height: 10px;
+    /* 指示器高度 */
+    background-color: #ccc;
+    /* 默认颜色 */
+    border-radius: 50%;
+    /* 圆形 */
+    margin: 0 5px;
+    /* 边距 */
+    cursor: pointer;
+    /* 鼠标样式 */
+    transition: background-color 0.3s;
+    /* 动画效果 */
+}
+
+.indicator.active {
+    background-color: #007bff;
+    /* 活动指示器颜色 */
+}
+
+
+/* Video Showcase */
+.video-showcase {
+    text-align: center;
+}
+
+.video-showcase h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.video-showcase h3::after {
+    content: '';
+    display: block;
+    height: 5px;
+    width: 60px;
+    background: #ff3e00;
+    /* Bright orange */
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.video-showcase video {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.6);
+}
+
+#sponsors {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #121212;
+}
+
+.sponsor-grid {
+    display: flex;
+    /* 使用 Flexbox 布局 */
+    justify-content: center;
+    /* 居中对齐 */
+    gap: 20px;
+    /* 每个赞助商之间的间距 */
+    flex-wrap: nowrap;
+    /* 不换行，强制在一行内排列 */
+    overflow-x: auto;
+    /* 如果赞助商数量过多，允许横向滚动 */
+    padding: 20px 0;
+    /* 为赞助商区域添加上下内边距 */
+}
+
+.sponsor {
+    transition: transform 0.3s ease;
+    width: 100px;
+    /* 固定宽度 */
+    height: 100px;
+    /* 固定高度 */
+    display: flex;
+    /* 使其成为弹性盒子 */
+    align-items: center;
+    /* 垂直居中对齐 */
+    justify-content: center;
+    /* 水平居中对齐 */
+    overflow: hidden;
+    /* 隐藏溢出部分 */
+}
+
+.sponsor img {
+    width: 100%;
+    /* 让图像占满容器宽度 */
+    height: 100%;
+    /* 让图像占满容器高度 */
+    object-fit: contain;
+    /* 保持图像比例 */
+    filter: brightness(0) invert(1);
+    /* 使用 CSS 使 SVG 变为白色 */
+    max-width: none;
+    /* 确保不限制宽度 */
+    max-height: none;
+    /* 确保不限制高度 */
+}
+
+.sponsor:hover {
+    transform: scale(1.1);
+}
+
+/* Team Grid */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Team Section */
+#team {
+    padding: 60px 20px;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.team-member {
+    background: #1c1c1c;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 220px;
+    text-align: center;
+    padding: 35px;
+    margin: 0 auto;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+.team-member p {
+    font-size: 20px;
+    color: #bbb;
+}
+
+.team-member i {
+    font-size: 20px;
+    color: #00ff99;
+}
+
+/* Contact Form */
+#contact {
+    padding: 60px 10px;
+    background-color: #121212;
+}
+
+#contact h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact input,
+#contact textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+#contact button {
+    padding: 10px;
+    background: linear-gradient(45deg, #ff66b2, #66ff66);
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#contact button:hover {
+    background: linear-gradient(90deg, #00cc99, #00ff99);
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    display: flex;
+    align-items: center;
+    /* Aligns items vertically centered */
+    justify-content: space-between;
+    /* Distributes space between items */
+    padding: 1rem;
+    /* Adds some padding */
+    background-color: #0a0a0a;
+    /* Optional: sets a background color */
+    text-align: center;
+    /* Centers text */
+}
+
+.footer-content {
+    display: flex;
+    /* Aligns logo and text horizontally */
+    align-items: center;
+    /* Centers items vertically */
+    flex: 1;
+    /* Allows footer content to grow and take available space */
+}
+
+.footer-text {
+    flex: 1;
+    /* Makes the copyright text take remaining space */
+}
+
+.footer-logo {
+    width: 40px;
+    /* Set width for the logo */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin-right: 1rem;
+    /* Space between logo and text */
+}
+
+.discord-footer {
+    font-size: 25px;
+    color: #ffffff00;
+}
+
+.discord-footer i {
+    color: #7289da;
+    /* Discord color */
+}
+
+/* Arrow Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 1.5s infinite;
+    font-size: 20px;
+    color: #66ff66;
+    cursor: pointer;
+}
+
+.scroll-indicator i {
+    display: block;
+    transition: color 0.3s;
+}
+
+/* 媒体查询：在小屏幕上调整样式 */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 20px;
+    }
+
+    .cta-button {
+        font-size: 1.1rem;
+    }
+
+    .game-card,
+    .team-member {
+        max-width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+        /* Stack elements vertically on small screens */
+        align-items: flex-start;
+        /* Align items to the left */
+    }
+
+    .nav-container {
+        display: none;
+        /* 在手机设备上隐藏导航容器 */
+    }
+
+    .nav-container ul {
+        flex-direction: column;
+        /* Stack nav items vertically */
+        width: 100%;
+        /* Full width for ul */
+    }
+
+    .nav-container li {
+        width: 100%;
+        /* Make each nav item full width */
+        text-align: center;
+        /* Center text on small screens */
+        margin: 5px 0;
+        /* Space between items */
+    }
+
+    nav ul li {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 40px;
+        /* Adjust logo size for very small screens */
+    }
+
+    .nav-container li {
+        margin: 2px 0;
+        /* Reduce margin for very small screens */
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 20px;
+    }
+
+    footer {
+        font-size: 15px;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes overlayAnimation {
+    0% {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: orange;
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes l15 {
+    0% {
+        background-size: 1ch 0, 1ch 0, 1ch 0, 1ch 0, 1ch 0, 1ch 0, 1ch 0
+    }
+
+    14.28% {
+        background-size: 1ch 100%, 1ch 0, 1ch 0, 1ch 0, 1ch 0, 1ch 0, 1ch 0
+    }
+
+    28.57% {
+        background-size: 1ch 100%, 1ch 100%, 1ch 0, 1ch 0, 1ch 0, 1ch 0, 1ch 0
+    }
+
+    42.85% {
+        background-size: 1ch 100%, 1ch 100%, 1ch 100%, 1ch 0, 1ch 0, 1ch 0, 1ch 0
+    }
+
+    57.14% {
+        background-size: 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 0, 1ch 0, 1ch 0
+    }
+
+    71.43% {
+        background-size: 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 0, 1ch 0
+    }
+
+    85.71% {
+        background-size: 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 0
+    }
+
+    100% {
+        background-size: 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%, 1ch 100%
+    }
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neowave Studios</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Flaticon -->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-thin-rounded/css/uicons-thin-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <!-- Icon -->
+    <link rel="shortcut icon" href="images/icon/icon.jpeg">
+    <link rel="icon" href="images/icon/icon.jpeg">
+    <meta name="msapplication-TileImage" content="images/icon/icon.jpeg" />
+    <!-- Font Awesome for star icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+</head>
+
+<body>
+    <!-- Loading Animation -->
+    <div id="loading" class="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="logo-container"> <!-- 新增的logo容器 -->
+                <div class="logo">
+                    <img src="images/icon/icon.jpeg" alt="Neowave Studios Logo">
+                    <span>Neowave Studios</span>
+                </div>
+            </div>
+            <div class="nav-container"> <!-- 新增的导航容器 -->
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <canvas id="starCanvas"></canvas> <!-- 添加Canvas元素 -->
+        <div class="hero-content">
+            <h1 class="jump-animation">
+                <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span>
+                <span> </span>
+                <span>t</span><span>o</span>
+                <span> </span>
+                <span>N</span><span>e</span><span>o</span><span>w</span><span>a</span><span>v</span><span>e</span>
+                <span> </span>
+                <span>S</span><span>t</span><span>u</span><span>d</span><span>i</span><span>o</span><span>s</span>
+            </h1>
+            <p>Crafting the Future of Gaming</p>
+            <a href="#games" class="cta-button">Explore Our Games</a>
+        </div>
+
+        <div>
+            <a href="#" target="_blank" title="Join us on Discord" class="discord-icon">
+                <i class="fi fi-brands-discord"></i>
+            </a>
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <!-- Arrow Indicator -->
+        <div class="scroll-indicator" id="scroll-indicator">
+            <i class="fi fi-br-chevron-double-down"></i>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="fade-in">
+        <!-- Video Showcase -->
+        <div class="video-showcase">
+            <h3>Game Trailer</h3>
+            <video controls poster="images/background/1.jpg">
+                <source src="videos/game-trailer.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <h2>Our Games</h2>
+        <div id="carouselGames" class="carousel-container">
+            <div class="game-card active">
+                <div class="game-image-container">
+                    <img src="images/background/1.jpg" alt="Game 1">
+                    <div class="game-info">
+                        <h3>Game Title 1</h3>
+                        <p>A short description of the game.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="images/background/1.jpg" alt="Game 2">
+                    <div class="game-info">
+                        <h3>Game Title 2</h3>
+                        <p>A short description of the game.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-image-container">
+                    <img src="images/background/1.jpg" alt="Game 3">
+                    <div class="game-info">
+                        <h3>Game Title 3</h3>
+                        <p>A short description of the game.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="indicators" class="indicators">
+            <span class="indicator active" data-index="0"></span>
+            <span class="indicator" data-index="1"></span>
+            <span class="indicator" data-index="2"></span>
+        </div>
+
+    </section>
+
+    <!-- Sponsor Section -->
+    <section id="sponsors" class="fade-in">
+        <h2>Our Sponsors</h2>
+        <div class="sponsor-grid" id="sponsorGrid">
+            <!-- Sponsor 1 -->
+            <a target="_blank" class="sponsor">
+                <img src="images/icon/svg/unreal.svg" alt="Sponsor 1 Logo">
+            </a>
+            <!-- Sponsor 2 -->
+            <a target="_blank" class="sponsor">
+                <img src="images/icon/svg/epic-games.svg" alt="Sponsor 2 Logo">
+            </a>
+            <!-- Sponsor 3 -->
+            <a target="_blank" class="sponsor">
+                <img src="images/icon/svg/blender-software.svg" alt="Sponsor 3 Logo">
+            </a>
+            <!-- Sponsor 4 -->
+            <a target="_blank" class="sponsor">
+                <img src="images/icon/svg/steam.svg" alt="Sponsor 4 Logo">
+            </a>
+            <!-- Sponsor 5 -->
+            <a target="_blank" class="sponsor">
+                <img src="images/icon/svg/android.svg" alt="Sponsor 5 Logo">
+            </a>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="fade-in">
+        <h2>Meet the Team</h2>
+        <div class="team-grid">
+            <!-- Team Member 1 -->
+            <div class="team-member circular">
+                <img src="images/background/1.jpg" alt="Team Member 1">
+                <h3>Wxxxxx</h3>
+                <p>Founder/Lead Developer</p>
+            </div>
+            <!-- Add more team members as needed -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out for collaboration or inquiries.</p>
+        <form action="#">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="images/icon/icon.jpeg" alt="Neowave Studios Logo" class="footer-logo">
+            <div class="footer-text">
+                <p>&copy; 2024 Neowave Studios. All rights reserved.</p>
+            </div>
+            <a href="#" target="_blank" title="Join us on Discord" class="discord-footer">
+                <i class="fi fi-brands-discord"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
